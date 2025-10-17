@@ -187,9 +187,6 @@ void ll_insert(LinkedList *list, Movie *movie, int n) {
     }
     
     node * previous_node = list -> head;
-    // for (int i = 0; i < n-1; i++){
-    //     previous_node = previous_node -> next;
-    // }
     previous_node = _ll_get_node(list, n-1);
     node * node_2_push = previous_node -> next;
     previous_node -> next = new_node;
@@ -275,12 +272,26 @@ Movie * ll_remove_back(LinkedList *list) {
  * @return the movie that was removed
  */
 Movie * ll_remove(LinkedList *list, int n) {
-    if (list == NULL || list->size == 0){
-        errno = ERANGE;
+    // base cases
+    if (list==NULL|| n<0 || n > list->size-1){
         return NULL;
+    } else if(n==0){
+        Movie *removed_movie = ll_remove_front(list);
+        return removed_movie;
+    } else if (n == list->size-1){
+        Movie *removed_movie = ll_remove_back(list);
+        return removed_movie;
     }
+    
+    node * prev_node = _ll_get_node(list, n-1);
+    node *removed_node = prev_node->next;
+    Movie *removed_movie = removed_node -> movie;
+    prev_node-> next = removed_node -> next;
 
-    return NULL;
+    list->size--;
+
+    free(removed_node);
+    return removed_movie;
 }
 
 /**
