@@ -1,17 +1,32 @@
 /**
  * Singly linked list implementation.
  *
- * @author: STUDENT ADD YOUR NAME
+ * @author: Joshua Roberge
  * @class: CS 5008
- * @term: UPDATE WITH CURRENT SEMESTER
+ * @term: 2025 Fall
  */
 
 #include <stdlib.h>
 #include <stdbool.h>
+#include <errno.h>
 
 
 #include "movie.h"
 #include "linked_list.h"
+
+
+
+node * _ll_get_node(LinkedList *list, int n) {
+    node *curr = list->head;
+    if (n < 0 || n >= list->size) {
+        return NULL;
+    }
+    for (int i = 0; i < n; i++) {
+        curr = curr->next;
+    }
+    return curr;
+}
+
 
 
 /** 
@@ -84,7 +99,28 @@ void clear_and_free_linked_list(LinkedList *list) {
  * @param movie the movie to add
  */
 void ll_add_front(LinkedList *list, Movie *movie) {
-    // STUDENT TODO: Implement
+    if (list == NULL) {
+        return; // Index out of bounds
+    }
+
+    node *new_node = __ll__new_node(movie);
+    if (new_node == NULL) {
+        return;
+    }
+
+    new_node -> movie  = movie;
+
+    // if list is empty and no tail node
+    if (list->head == NULL){
+        list->head = new_node;
+        list->tail = new_node; 
+    } else{
+        new_node-> next  = list->head;
+        list->head = new_node;
+    }
+    ll_to_str(list);
+    
+    list->size++;
 }
 
 /**
@@ -98,7 +134,26 @@ void ll_add_front(LinkedList *list, Movie *movie) {
  * @param movie the movie to add
  */
 void ll_add_back(LinkedList *list, Movie *movie) {
-    // STUDENT TODO: Implement
+    
+    if (list == NULL) {
+        return;
+    }
+    node *new_node = __ll__new_node(movie);
+    if (new_node == NULL) {
+        return;
+    }
+
+    new_node -> movie  = movie;
+
+    // if list is empty and no tail node
+    if (ll_is_empty(list)){
+        list->head = new_node;
+        list->tail = new_node; 
+    } else {
+        list->tail->next = new_node;
+        list->tail = new_node;
+    }
+    list->size++;
 }
 
 
@@ -114,7 +169,34 @@ void ll_add_back(LinkedList *list, Movie *movie) {
  * @param n the index to insert at
  */
 void ll_insert(LinkedList *list, Movie *movie, int n) {
-   // STUDENT TODO: Implement
+    // base cases
+    if (list==NULL|| n<0 || n > list->size){
+        return;
+    } else if(n==0){
+        ll_add_front(list, movie);
+        return;
+    } else if (n == list->size){
+        ll_add_back(list, movie);
+        return;
+    } 
+
+    // making the new node
+    node * new_node = __ll__new_node(movie);
+    if (new_node == NULL) {
+        return;
+    }
+    
+    node * previous_node = list -> head;
+    // for (int i = 0; i < n-1; i++){
+    //     previous_node = previous_node -> next;
+    // }
+    previous_node = _ll_get_node(list, n-1);
+    node * node_2_push = previous_node -> next;
+    previous_node -> next = new_node;
+    new_node -> next = node_2_push;
+    list->size++;
+    return;
+    
 }
 
 
@@ -128,11 +210,25 @@ void ll_insert(LinkedList *list, Movie *movie, int n) {
  * @return the movie that was removed
  */
 Movie * ll_remove_front(LinkedList *list) {
-    Movie *movie = NULL;
-    
-    // STUDENT TODO: Implement
+    if (list == NULL || list->size == 0){
+        errno = ERANGE;
+        return NULL;
+    }
 
-    return movie;
+    node *removed_node = list-> head;
+    Movie *removed_movie = removed_node -> movie;
+    list->size--;
+
+    if(list-> size <= 0 || removed_node -> next == NULL){
+        list->head = NULL;
+        list->tail = NULL;
+    } else{
+        list-> head  = removed_node -> next;
+    }
+    
+    free(removed_node);
+    return removed_movie;
+
 }
 
 /**
@@ -145,9 +241,26 @@ Movie * ll_remove_front(LinkedList *list) {
  * @return the movie that was removed
  */
 Movie * ll_remove_back(LinkedList *list) {
-    Movie* movie = NULL;
-    // STUDENT TODO: Implement
-    return movie;
+    if (list == NULL || list->size == 0){
+        errno = ERANGE;
+        return NULL;
+    }
+    
+    node *removed_node = list-> tail;
+    Movie *removed_movie = removed_node -> movie;
+    list->size--;
+
+    if(list-> size == 0){
+        list->head = NULL;
+        list->tail = NULL;
+    } else{
+        node *new_tail = _ll_get_node(list, list->size - 1);
+        new_tail->next = NULL;
+        list->tail = new_tail;
+    }
+    
+    free(removed_node);
+    return removed_movie;
 }
 
 /**
@@ -162,9 +275,12 @@ Movie * ll_remove_back(LinkedList *list) {
  * @return the movie that was removed
  */
 Movie * ll_remove(LinkedList *list, int n) {
-    Movie * movie = NULL;
-    // STUDENT TODO: Implement
-    return movie;
+    if (list == NULL || list->size == 0){
+        errno = ERANGE;
+        return NULL;
+    }
+
+    return NULL;
 }
 
 /**
@@ -186,6 +302,9 @@ Movie* ll_get(LinkedList *list, int n) {
     }
     return curr->movie;
 }
+
+
+
 
 /**
  * Checks if a linked list contains a given movie.
@@ -221,12 +340,18 @@ bool ll_is_empty(LinkedList *list) {
 /**
  * Converts a linked list to a string representation.
  * 
+ * 
  * @param list the linked list to convert
  * @return a string representation of the linked list
  */
 char* ll_to_str(LinkedList *list) {
     
-    char *str = (char *)malloc(sizeof(char) * (MAX_MOVIE_STR_LEN + 3) * list->size);
+    // Calculate allocation size, ensuring minimum of 3 bytes for "[]"
+    size_t alloc_size = (MAX_MOVIE_STR_LEN + 3) * list->size;
+    if (alloc_size < 3) {
+        alloc_size = 3;
+    }
+    char *str = (char *)malloc(sizeof(char) * alloc_size);
     if (list->size == 0) {
         strcpy(str, "[]");
         return str; // early exit
