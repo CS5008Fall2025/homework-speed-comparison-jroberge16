@@ -14,7 +14,14 @@
 
 
 /**
- * source: https://www.geeksforgeeks.org/dsa/binary-search/
+ * 
+ * This is a private function to find the index of a movie
+ * in the sorted vector using binary search.
+ * 
+ * @source https://www.geeksforgeeks.org/dsa/binary-search/
+ * @param vector the sorted vector to search
+ * @param title the title of the movie to find
+ * @return the index of the movie if found, -1 otherwise
  */
 int _find_index_binary(SortedMovieVector * vector, const char * title){
     int low = 0;
