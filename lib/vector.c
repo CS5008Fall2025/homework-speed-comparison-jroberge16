@@ -200,7 +200,12 @@ bool vector_is_empty(MovieVector *vector) {
  * @return the string representation
 */
 char *vector_to_str(MovieVector *vector) {
-    char *str = (char *)malloc(sizeof(char) * (MAX_MOVIE_STR_LEN + 3) * vector->size);
+    // Calculate allocation size, ensuring minimum of 3 bytes for "[]"
+    size_t alloc_size = (MAX_MOVIE_STR_LEN + 3) * vector->size;
+    if (alloc_size < 3) {
+        alloc_size = 3; // minimum for "[]" + null terminator
+    }
+    char *str = (char *)malloc(sizeof(char) * alloc_size);
     if (vector->size == 0){
         strcpy(str, "[]");
         return str; // early exit

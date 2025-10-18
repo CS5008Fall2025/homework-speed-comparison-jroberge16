@@ -1,13 +1,43 @@
 /**
  * Contains functions for the sorted vector struct
  *
- * @author: STUDENT ADD YOUR NAME
+ * @author: Joshua Roberge
  * @class: CS 5008
- * @term: UPDATE WITH CURRENT SEMESTER
+ * @term: Fall 2025
 **/
 
 #include "vector.h"
 #include "movie.h"
+
+
+
+
+
+/**
+ * source: https://www.geeksforgeeks.org/dsa/binary-search/
+ */
+int _find_index_binary(SortedMovieVector * vector, const char * title){
+    int low = 0;
+    int high = vector->size - 1;
+    int mid;
+
+    while (low <= high){
+        // safer for overflowing
+        mid = low + (high - low) / 2;
+        int evaluation  = strcasecmp(title, vector->movies[mid]->title);
+
+        if(evaluation == 0){
+            return mid;
+        }
+        if(evaluation > 0){
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+
+    }
+    return -1;
+}
 
 
 /**
@@ -24,7 +54,16 @@
  * @param movie the movie to add
 */
 void add_to_sorted_vector(SortedMovieVector * vector, Movie * movie) {
-    // STUDENT TODO: implement this function
+    int n = vector->size - 1;
+
+    for(int i=0; i<=n;i++){
+        int eval = strcmp(movie->title, vector->movies[i]->title);
+        if (eval < 0){ // less then zero makes this stable
+            vector_insert(vector, movie, i);
+            return;
+        }
+    }
+     vector_add_back(vector, movie);
 }
 
 /**
@@ -43,9 +82,12 @@ void add_to_sorted_vector(SortedMovieVector * vector, Movie * movie) {
  * @return the movie if found, NULL otherwise
  */
 Movie * find_in_sorted_vector(SortedMovieVector * vector, const char * title) {
-    // STUDENT TODO: implement this function
-
-    // if the movie is not found, return NULL
+    int index = _find_index_binary(vector, title);
+    if (index != -1){
+        Movie * found_movie = vector->movies[index];
+        return found_movie;
+        
+    }
     return NULL;
 }
 
@@ -65,7 +107,18 @@ Movie * find_in_sorted_vector(SortedMovieVector * vector, const char * title) {
  * @return the movie removed, NULL otherwise
  */
 Movie* sorted_vector_remove(SortedMovieVector *vector, const char *title){
-    // STUDENT TODO: implement this function
+    // assumption there are not multiple movies with the same title
+    // we can only return one movie anyway.
+    int index = _find_index_binary(vector, title);
+    if (index != -1){
+        Movie * found_movie = vector->movies[index];
+        vector_remove(vector, index);
+        return found_movie;
+        
+    }
 
     return NULL; // not found
 }
+
+
+

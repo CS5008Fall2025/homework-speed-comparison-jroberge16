@@ -22,7 +22,7 @@ Movie* movie4;
 Movie* movie5;
 Movie* movie6;
 
-
+// gcc -Wall tests/playground.c lib/movie.c lib/linked_list.c -o tests/playground.out
 
 
 int main(const int argc, const char *argv[]) {
