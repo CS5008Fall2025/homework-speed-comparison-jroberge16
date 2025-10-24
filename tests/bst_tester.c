@@ -539,7 +539,7 @@ TestingSet *init_testing_set()
     add_test(set, "testing bst_to_str() prints the BST in preorder", GROUP_TO_STRING, test_bst_to_str_preorder);
     add_test(set, "testing bst_to_str() prints the BST in inorder", GROUP_TO_STRING, test_bst_to_str_inorder);
     add_test(set, "testing bst_to_str() prints the BST in postorder", GROUP_TO_STRING, test_bst_to_str_postorder);
-    // add_test(set, "testing bst_to_sorted_array() converts the BST to a sorted array", GROUP_GENERAL, test_bst_to_sorted_array);
+    add_test(set, "testing bst_to_sorted_array() converts the BST to a sorted array", GROUP_GENERAL, test_bst_to_sorted_array);
 
     return set;
 }

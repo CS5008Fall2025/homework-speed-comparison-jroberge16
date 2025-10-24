@@ -413,7 +413,15 @@ char * bst_to_str(BST * tree, int traversal) {
  * 
 */
 void __bst__to_sorted_array(BSTNode * curr, Movie ** array, int * index) {
-    // STUDENT TODO: implement this function
+    
+    if (curr == NULL) {
+        return ;
+    }    
+
+    __bst__to_sorted_array(curr->left, array, index);
+    array[*index] = curr->movie;
+    (*index)++;
+    __bst__to_sorted_array(curr->right, array, index);
 }
 
 /**
