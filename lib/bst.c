@@ -80,6 +80,26 @@ void clear_and_free_bst(BST * bst) {
     bst->root = NULL;
 }
 
+/**
+ * I didn't want to mess with the signature of __bst__add and It was going to 
+ * to get messy if i tried to this with a voided function, so I used __bst__add
+ * as a dummy function and 
+ */
+BSTNode * __bst__add_none_void_fx(BSTNode * curr, Movie * movie) {
+    if(curr == NULL){
+        return  __bst__new_node(movie);
+    }
+    
+    int comparable = compare_movies(movie, curr->movie);
+
+    if (comparable < 0){
+        curr->left = __bst__add_none_void_fx(curr->left, movie);
+    }else if(comparable > 0){
+        curr->right = __bst__add_none_void_fx(curr->right, movie);
+    }
+    return curr;
+}
+
 
 /** 
  * Add helper for adding recursively to BST
@@ -91,8 +111,11 @@ void clear_and_free_bst(BST * bst) {
  * @param movie the movie to add 
 */
 void __bst__add(BSTNode * curr, Movie * movie) {
-   // STUDENT TODO: implement this function
+    __bst__add_none_void_fx(curr, movie);
 }
+
+
+
 /**
  * Adds the given movie into the BST. 
  * Handles the root case, but then calls the recursive helper
@@ -185,9 +208,17 @@ void bst_remove(BST * bst, Movie * movie) {
  * @return the node that was found
 */
 BSTNode * __bst__find(BSTNode * curr, const char * title) {
-   // STUDENT TODO: implement this function
-
-   return NULL; // STUDENT TODO: update this return statement if needed
+   while(curr != NULL){
+        int comparable = strcasecmp(title, curr->movie->title);
+        if (comparable == 0){
+            return curr;
+        }else if(comparable < 0){
+            curr = curr->left;
+        } else if (comparable > 0){
+            curr = curr->right;
+        }
+   }
+   return NULL; 
 }
 
 /**

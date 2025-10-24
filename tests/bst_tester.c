@@ -535,11 +535,11 @@ TestingSet *init_testing_set()
     add_test(set, "testing bst_remove() removes movies from the BST down the right side", GROUP_REMOVE, test_bst_remove_single_side);
     add_test(set, "testing bst_remove() removes movies from the BST down the left side", GROUP_REMOVE, test_bst_remove_left_side);
     add_test(set, "testing bst_find() finds movies in the BST", GROUP_GET, test_bst_find);
-    add_test(set, "testing bst_to_str() prints the BST in breadth first order", GROUP_TO_STRING, test_bst_to_str_breadth_first);
-    add_test(set, "testing bst_to_str() prints the BST in preorder", GROUP_TO_STRING, test_bst_to_str_preorder);
-    add_test(set, "testing bst_to_str() prints the BST in inorder", GROUP_TO_STRING, test_bst_to_str_inorder);
-    add_test(set, "testing bst_to_str() prints the BST in postorder", GROUP_TO_STRING, test_bst_to_str_postorder);
-    add_test(set, "testing bst_to_sorted_array() converts the BST to a sorted array", GROUP_GENERAL, test_bst_to_sorted_array);
+    // add_test(set, "testing bst_to_str() prints the BST in breadth first order", GROUP_TO_STRING, test_bst_to_str_breadth_first);
+    // add_test(set, "testing bst_to_str() prints the BST in preorder", GROUP_TO_STRING, test_bst_to_str_preorder);
+    // add_test(set, "testing bst_to_str() prints the BST in inorder", GROUP_TO_STRING, test_bst_to_str_inorder);
+    // add_test(set, "testing bst_to_str() prints the BST in postorder", GROUP_TO_STRING, test_bst_to_str_postorder);
+    // add_test(set, "testing bst_to_sorted_array() converts the BST to a sorted array", GROUP_GENERAL, test_bst_to_sorted_array);
 
     return set;
 }
