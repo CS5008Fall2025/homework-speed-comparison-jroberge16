@@ -175,6 +175,11 @@ int main(int argc, const char** argv) {
     srand(time(NULL)); // set random seed to current time, used by rand() in tests
 
     double *results = (double *)malloc(sizeof(double) * RESULTS_LENGTH);
+    if (results == NULL) {
+        LOG_ERROR("Failed to allocate memory for results array\n");
+        free_vector(movies);
+        return 1;
+    }
 
     for(int n = INCREMENT; n < movies->size; n += INCREMENT) {
         memset(results, 0, sizeof(double) * RESULTS_LENGTH); // reset results array

@@ -4,5 +4,8 @@
         "string_view": "c",
         "initializer_list": "c",
         "stdio.h": "c"
-    }
+    },
+    "cSpell.words": [
+        "datastrcuture"
+    ]
 }

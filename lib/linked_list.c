@@ -108,7 +108,7 @@ void ll_add_front(LinkedList *list, Movie *movie) {
         return;
     }
 
-    new_node -> movie  = movie;
+    // new_node -> movie  = movie;
 
     // if list is empty and no tail node
     if (list->head == NULL){
@@ -118,7 +118,7 @@ void ll_add_front(LinkedList *list, Movie *movie) {
         new_node-> next  = list->head;
         list->head = new_node;
     }
-    ll_to_str(list);
+    // ll_to_str(list);
     
     list->size++;
 }
@@ -143,7 +143,7 @@ void ll_add_back(LinkedList *list, Movie *movie) {
         return;
     }
 
-    new_node -> movie  = movie;
+    // new_node -> movie  = movie;
 
     // if list is empty and no tail node
     if (ll_is_empty(list)){
@@ -186,8 +186,8 @@ void ll_insert(LinkedList *list, Movie *movie, int n) {
         return;
     }
     
-    node * previous_node = list -> head;
-    previous_node = _ll_get_node(list, n-1);
+    // node * previous_node = list -> head;
+    node * previous_node = _ll_get_node(list, n-1);
     node * node_2_push = previous_node -> next;
     previous_node -> next = new_node;
     new_node -> next = node_2_push;

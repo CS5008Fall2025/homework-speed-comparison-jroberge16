@@ -34,7 +34,7 @@ MovieVector * load_movies(const char* filename) {
     }
     char * line = NULL;
     size_t len = 0;
-    ssize_t read;
+    size_t read;
     int id = 0;
     while ((read = getline(&line, &len, file)) != -1) {
         // remove the newline character
