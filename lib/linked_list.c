@@ -100,7 +100,7 @@ void clear_and_free_linked_list(LinkedList *list) {
  */
 void ll_add_front(LinkedList *list, Movie *movie) {
     if (list == NULL) {
-        return; // Index out of bounds
+        return;
     }
 
     node *new_node = __ll__new_node(movie);
