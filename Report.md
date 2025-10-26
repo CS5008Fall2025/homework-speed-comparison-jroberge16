@@ -30,13 +30,13 @@ For Sort, we are asking for the Big $O$ for taking the current data structure an
 
 Since the worst case can change considerably based on what sort you use for sorting (if any), list each algorithm below, and specify the algorithm used in your assumption.  For BST, write which  method of traversal you would use to sort it.  
 
-* Vector
-* Single Linked List
-* Double Linked List
+* Vector: We can assume that we can write these values in $n \cdot log(n)$ using the merge sort algorithm.
+* Single Linked List: We can assume that we can write these values in $n \cdot log(n)$ using the merge sort algorithm. We can implement Merge sort on linked list directly or we can convert a linked lsit to an array and back again in $O(n)$.
+* Double Linked List: We can assume that we can write these values in $n \cdot log(n)$ using the merge sort algorithm. We can implement Merge sort on linked list directly or we can convert a linked lsit to an array and back again in $O(n)$.
 * Sorted Vector - already sorted
-* Sorted Single Linked List - already sorted
-* Sorted Double Linked List - already sorted
-* Binary Search Tree 
+* Sorted Single Linked List - already sorted: $O(n)$ since we are writing to a file
+* Sorted Double Linked List - already sorted: $O(n)$ since we are writing to a file
+* Binary Search Tree: We can assume in order traversal. `BST` trees are already in order, so the cost here is writing to a file which would be $O(n)$ 
 
 ### Worst Case vs. Average Case
 
