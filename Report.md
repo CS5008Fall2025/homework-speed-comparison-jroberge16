@@ -127,7 +127,7 @@ For this analysis, we will analyze visual one and two together, since they show 
 
 ![LogTime](data_analysis\images\3image.png)
 
-This graph shows a box-whisker plot for each Data Structure and Operation. Our runtimes have been normalized by dividing each run time by N to acquire the average runtime per value of $n$. This graph shows that there was a significant amount of variability when it came to searching for an element in a linked list. This graph really highlights where each Data Structure excels and where each algorithm has shortcomings.
+This graph shows a box-and-whisker plot for each data structure and operation. Our runtimes have been normalized by dividing each runtime by $N$ to acquire the average runtime per value of $n$. This graph shows that there was a significant amount of variability when it came to searching for an element in a linked list. This graph really highlights where each data structure excels and where each algorithm has shortcomings.
 
 ## Critical Thought
 
