@@ -102,11 +102,11 @@ Create *at least three* graphics that each visually explain an aspect of your da
 ![Operation vs Time2](data_analysis\images\1image.png)
 ![LogTime](data_analysis\images\2image.png)
 
-For this analysis, we will analyze visual one and two together, since they show similar information and merely have different scales. Each graph in the visual above represents an operation performed during our analysis. Each line within the graph represents a particular data structure. For the purpose of this analysis, we will analyze one graph at a time.
+For this analysis, we will analyze visuals one and two together, since they show similar information. Each graph in the visual above represents an operation performed during our analysis. Each line within the graph represents a particular data structure. For the purposes of this analysis, we will analyze one graph at a time.
 
-* `Add`: This shows that the BST was our most performant data structure. Our sorted vector and linked list behaved similarly and had similar runtime, which is expected since they should have a runtime of $O(n)$ for the add operation.
+* `Add`: This shows that the BST was our most performant data structure. Our sorted vector and linked list behaved similarly and had similar runtimes.
 
-* `Search`: The sorted vector was our most performant data structure here, but BST was a very close second. BST and a sorted vector have a runtime of $O(\log n)$ for search, but we are surprised that the overhead between the data structures didn’t cause a more substantial difference in runtimes.
+* `Search`: The sorted vector was our most performant data structure, but BST was a very close second. BST amortized search runtime is $O(\log n)$ while a sorted vector’s worst-case runtime using binary search is $O(\log n)$. We are surprised that the overhead between the data structures didn’t cause a more substantial difference in runtimes, and that BST’s worst case of $O(n)$ didn’t appear more often.
 
 * `Save`: These runtimes were all roughly equivalent. Writing to a file should be $O(n)$ for all data structures.
 
@@ -261,5 +261,6 @@ Add your references here. A good reference includes an inline citation, such as 
 
 [ACM Reference Format]: https://www.acm.org/publications/authors/reference-formatting
 [IEEE]: https://www.ieee.org/content/dam/ieee-org/ieee/web/org/conferences/style_references_manual.pdf
+
 
 
