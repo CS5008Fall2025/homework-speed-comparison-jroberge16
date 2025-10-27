@@ -99,8 +99,8 @@ Create *at least three* graphics that each visually explain an aspect of your da
 
 #### Graphic 1 & Graphic 2:
 
-![Operation vs Time2](data_analysis\images\1image.png)
-![LogTime](data_analysis\images\2image.png)
+![Operation vs Time2](data_analysis/images/1image.png)
+![LogTime](data_analysis/images/2image.png)
 
 For this analysis, we will analyze visuals one and two together, since they show similar information. Each graph in the visual above represents an operation performed during our analysis. Each line within the graph represents a particular data structure. For the purposes of this analysis, we will analyze one graph at a time.
 
@@ -261,6 +261,7 @@ Add your references here. A good reference includes an inline citation, such as 
 
 [ACM Reference Format]: https://www.acm.org/publications/authors/reference-formatting
 [IEEE]: https://www.ieee.org/content/dam/ieee-org/ieee/web/org/conferences/style_references_manual.pdf
+
 
 
 
