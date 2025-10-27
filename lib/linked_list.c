@@ -117,9 +117,7 @@ void ll_add_front(LinkedList *list, Movie *movie) {
     } else{
         new_node-> next  = list->head;
         list->head = new_node;
-    }
-    // ll_to_str(list);
-    
+    }    
     list->size++;
 }
 

@@ -28,6 +28,7 @@ $ ./list-test.out -v
 $ make bst-test
 $ ./bst-test.out -v
 ```
+N,SortedVector Add,LinkedList Add,BST Add,SortedVector Search,LinkedList Search,BST Search,SortedVector Save,SortedList Save, BST Save,SortedVector Remove,SortedList Remove,BST Remove,Vector Add Front,LinkedList Add Front,Vector Add Back,LinkedList Add Back,Vector Remove Front,LinkedList Remove Front,Vector Remove Back,LinkedList Remove Back,Vector Get,LinkedList Get
 
 The `-v` flag is optional, but will enable feedback. For example, sample output for the above command is blow:
 

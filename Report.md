@@ -97,20 +97,35 @@ Create *at least three* graphics that each visually explain an aspect of your da
 > 
 > Make sure you can see the image embedded in the Report.md using [image markdown] when you upload it to github, and get help if it doesn't show! 
 
-#### Graphic 1 (Replace with a descriptive title)
+#### Graphic 1 & Graphic 2:
 
-<div align="center">
-  ![Image alt text]("data analysis/images/operation_v_Time.png")
-</div>
+![Operation vs Time2](data_analysis\images\1image.png)
+![LogTime](data_analysis\images\2image.png)
+
+For this analysis, we will analyze graph one and two together since they show similar information but merely have different scales. Each graph in the visual above represents a operation performed during our analysis. Each line within the graph represents a particular data structure. For the purpose of this analysis, we will analyze each graph,
+
+* Add: this shows that the BST data structure was out most performant. Our sorted vector and linked list behaved similarly and had similar runtime which is expected since they should have a runtime of of $O(n)$ whe it comes to the add operation
+
+* Search: a sorted vector was our most performant data structure here, but BST was a verty close second. I know that searching for a value in a BST and a Sorted vector have a runtime of $log(n)$, but I’m surprised that the overhead between the data structure didn’t cause a more substantial difference between the two data structures.
+
+* Save: these runtimes where all roughly equivalent. Writing to a file should be $O(n)$ for all data structures.
+
+* Remove: the BST was the fastest at removing an element. I was surprised at how slow a Sorted Linked list was at removing an element. 
+
+* ADD Front: As expected, adding to the front of a vector is much slower when compared to a linked list. For a vector this should be $O(n)$ and for a linked list it should be $O(1)$.
+
+* Add Back: Both run time were roughly equivalent when adding to the back which should be $O(1)$. Surprisingly our graph shows a linear runtime for both, but we believe this is merely overhead since the actual runtimes are very small.
+
+* Remove Front: As expected, the runtime for vector was very slow when removing form, the front of the vector. This aligns with our expectation since removing from the front of a vector is guaranteed to be $O(n)$ time complexity, but for a linked list this would be $O(1)$.  
+
+* Remove Back: As expected our linked list was much slower at removing from the back which is an $O(n)$ operation.
+
+* Get: Linked List was a slowest at retrieving by index which is a $O(n)$ operation. Our Vector, as expected showed constant runtime for retrieving by index. 
 
 
-#### Graphic 2 (Replace with a descriptive title)
+#### Graphic 3:
 
-  ![Image alt text]("data analysis\images\operation_v_Time.png")
-
-#### Graphic 3 (Replace with a descriptive title)
-
-> Insert your comments/observations about the graphic here
+![LogTime](data_analysis\images\3image.png)
 
 ## Critical Thought
 
