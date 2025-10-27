@@ -144,7 +144,11 @@ For example:
 
 1. What is the most surprising result from the data? Why is it surprising?
 
+   What I found most surprising was how linear run time presented itself. At first, linear runtime has a curve to it which intuitively means something is greater the $O(n)$ runtime. I think this curve is merely the overhead cost and resource constraints which is eventually trivialized as $n$ increases. I think this show how hard emprical data is to analyzed,and how important proofs are.
+
 2. What data structure is the fast at adding elements (sorted)? Why do you think that is?
+
+   `BST` was the fastest data structure at adding elements. This make sense sense since adding to a BST should be $O(\log(n))$ as long as our tree is balanced. The add operation for a `BST` is determined by its height, while our other data structures, to maintain there sorted order, add elements with a $O(n)$ runtime.
 
 3. What data structure is the fastest at removing elements (sorted)? Why do you think that is?
 
