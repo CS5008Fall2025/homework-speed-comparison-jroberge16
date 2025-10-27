@@ -125,7 +125,7 @@ For this analysis, we will analyze visuals one and two together, since they show
 
 #### Graphic 3:
 
-![LogTime](data_analysis\images\3image.png)
+![LogTime](data_analysis/images/3image.png)
 
 This graph shows a box-and-whisker plot for each data structure and operation. Our runtimes have been normalized by dividing each runtime by $N$ to acquire the average runtime per value of $n$. This graph shows that there was a significant amount of variability when it came to searching for an element in a linked list. This graph really highlights where each data structure excels and where each algorithm has shortcomings.
 
@@ -144,7 +144,7 @@ For example:
 
 1. What is the most surprising result from the data? Why is it surprising?
 
-   What I found most surprising was how linear run time presented itself. At first, linear runtime has a curve to it which intuitively means something is greater the $O(n)$ runtime. I think this curve is merely the overhead cost and resource constraints which is eventually trivialized as $n$ increases. I think this show how hard emprical data is to analyzed,and how important proofs are.
+   What I found most surprising was how linear run time presented itself. At first, linear runtime has a curve to it, which intuitively means something is greater than an $O(n)$ runtime. I think this curve is merely the overhead cost and resource constraints, which is eventually trivialized as $n$ increases. I think this shows how hard it is to rely on only empirical data.
 
 2. What data structure is the fast at adding elements (sorted)? Why do you think that is?
 
@@ -261,6 +261,7 @@ Add your references here. A good reference includes an inline citation, such as 
 
 [ACM Reference Format]: https://www.acm.org/publications/authors/reference-formatting
 [IEEE]: https://www.ieee.org/content/dam/ieee-org/ieee/web/org/conferences/style_references_manual.pdf
+
 
 
 
