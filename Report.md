@@ -46,7 +46,7 @@ source:https://www.youtube.com/watch?v=8ocB7a_c-Cc
 There are a few functions whose worse case is very different than the average case. Name at least two of them, and explain why the worse case is so much worse than the average case. 
 
 1. Binary Search Tree: 
-   For the Operations `Add/Insert`, `Search/Find`, and `Remove`, we have different runtimes depending on whether we are looking at amortized or not amortized. This is due to the structure  and make up of Tree before these operations take place. If we are given data that is already ordered, then we will essentially be creating a linked list. In this scenario we inherit the runtime of the linked list, but if our data is randomized then we can assume amortized case. Here is an example of our worst case, lets say we are add the following values to our tree one at a time: 10,9,8,7, and 6 the resulting tree would be as follows:
+For the Operations `Add/Insert`, `Search/Find`, and `Remove`, we have different runtimes depending on whether we are looking at amortized or not amortized. This is due to the structure  and make up of Tree before these operations take place. If we are given data that is already ordered, then we will essentially be creating a linked list. In this scenario, we inherit the runtime of the linked list, but if our data is randomized, then we can assume an amortized case. For example, if we insert a list of order numbers, let's say 10,9,8,7, and 6, the resulting tree will be:
    
    ```mermaid
    flowchart TD
@@ -56,7 +56,7 @@ There are a few functions whose worse case is very different than the average ca
       7 --> 6
    ```
 2. Vector:
-   In out add to the back operation for our vector data structure, we have run amortized runtime of $O(1)$ vs a worst case of $O(n)$. This worst case happens when we go over capacity for our vector. Our vector is a fixed size, and when we reach that fixed size we make a new array that is generally double the capacity. With this new array we then copy the existing values from the old array into the new array. When this happens, our worst case is $O(n)$, but generally adding to the back is $O(1)$.
+In the `our add back` operation for the vector data structure, we have an amortized runtime of $O(1)$ vs a worst-case of $O(n)$. This worst-case happens when we go over our vector’s capacity. Our vector is a fixed size, and when we reach that fixed size, we make a new array that is generally double the capacity. With this new array, we then copy the existing values from the old array into the new array. In this scenario, our worst case is $O(n)$, but generally adding to the back is $O(1)$.
 
 
 
@@ -261,4 +261,5 @@ Add your references here. A good reference includes an inline citation, such as 
 
 [ACM Reference Format]: https://www.acm.org/publications/authors/reference-formatting
 [IEEE]: https://www.ieee.org/content/dam/ieee-org/ieee/web/org/conferences/style_references_manual.pdf
+
 
