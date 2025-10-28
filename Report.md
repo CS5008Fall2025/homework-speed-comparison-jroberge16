@@ -143,36 +143,35 @@ For example:
 ```
 
 1. What is the most surprising result from the data? Why is it surprising?
-
    What I found most surprising was how linear run time presented itself. At first, linear runtime has a curve to it, which intuitively means something is greater than an $O(n)$ runtime. I think this curve is merely the overhead cost and resource constraints, which is eventually trivialized as $n$ increases. I think this shows how hard it is to rely on only empirical data.
 
 2. What data structure is the fast at adding elements (sorted)? Why do you think that is?
 
- Binary Search Tree (BST) was the fastest data structure at adding new elements. This aligns with our expectations since adding to a BST should be $O(\log(n))$ given that the tree is balanced. The add operation for a `BST` is determined by its height, while our other data structures maintain their sorted order with a worst case of $O(n)$ runtime.
+    Binary Search Tree (BST) was the fastest data structure at adding new elements. This aligns with our expectations since adding to a BST should be $O(\log(n))$ given that the tree is balanced. The add operation for a `BST` is determined by its height, while our other data structures maintain their sorted order with a worst case of $O(n)$ runtime.
 
 3. What data structure is the fastest at removing elements (sorted)? Why do you think that is?
 
-Our most performant data structure for removing elements was a BST.  We were surprised at how fast a sorted vector was at removing sorted elements since this could be an $O(n)$ operation for the worst case.
+   Our most performant data structure for removing elements was a BST.  We were surprised at how fast a sorted vector was at removing sorted elements since this could be an $O(n)$ operation for the worst case.
 
 4. What data structure is the fastest at searching? Why do you think that is?
 
-A sorted vector was slightly faster than a BST when searching for an element. The difference here could simply be noise because they should both run in $O(\log(n))$ given a balanced tree.
+   A sorted vector was slightly faster than a BST when searching for an element. The difference here could simply be noise because they should both run in $O(\log(n))$ given a balanced tree.
 
 5. What data structure is the fastest for adding elements to the front? Why do you think that is?
 
-A linked list was the fastest data structure for adding to the front. For a linked list, adding to the front is a $O(1)$ worst-case compared to a vector, which is $O(n)$. To add to the front of a linked list, we merely create a new node and assign pointers. When we add to the front of a vector, we have to shift all values down by one spot, making this an $O(n)$ operation.
+   A linked list was the fastest data structure for adding to the front. For a linked list, adding to the front is a $O(1)$ worst-case compared to a vector, which is $O(n)$. To add to the front of a linked list, we merely create a new node and assign pointers. When we add to the front of a vector, we have to shift all values down by one spot, making this an $O(n)$ operation.
 
 6. What data structure is the fastest for adding elements to the back? Why do you think that is?
 
-A vector, on average, was slightly faster at adding to the back. Although we noted a small difference between the two data structures, this could be attributed to noise, since the difference is small and their runtimes for this operation should be $O(1)$. We should note that a linked list would have more constant operations for this activity when compared to a vector, which could also be a factor.
+   A vector, on average, was slightly faster at adding to the back. Although we noted a small difference between the two data structures, this could be attributed to noise, since the difference is small and their runtimes for this operation should be $O(1)$. We should note that a linked list would have more constant operations for this activity when compared to a vector, which could also be a factor.
 
 7. What data structure is the fastest for removing elements from the front? Why do you think that is?
 
-A linked list was the fastest algorithm for removing the first element. For a linked list, this should be an $O(1)$ operation since it only needs to free a node and reassign the head pointer. For vectors, removing an element from the front is an $O(n)$ operation because all values must be shifted up.
+   A linked list was the fastest algorithm for removing the first element. For a linked list, this should be an $O(1)$ operation since it only needs to free a node and reassign the head pointer. For vectors, removing an element from the front is an $O(n)$ operation because all values must be shifted up.
 
 8. What data structure is the fastest for removing elements from the back? Why do you think that is?
 
-The vector was the fastest data structure for removing from the front. Since vectors have direct access, removing from the back is an $O(1)$ operation. We used a singly linked list, and thus removing from the back is $O(n)$. Singly linked lists have this runtime, since they must traverse the entire data structure  to find the second to last node, which is then reassigned as the new tail node.
+   The vector was the fastest data structure for removing from the front. Since vectors have direct access, removing from the back is an $O(1)$ operation. We used a singly linked list, and thus removing from the back is $O(n)$. Singly linked lists have this runtime, since they must traverse the entire data structure  to find the second to last node, which is then reassigned as the new tail node.
 
 ### Deeper Thinking
 
@@ -273,6 +272,7 @@ Add your references here. A good reference includes an inline citation, such as 
 
 [ACM Reference Format]: https://www.acm.org/publications/authors/reference-formatting
 [IEEE]: https://www.ieee.org/content/dam/ieee-org/ieee/web/org/conferences/style_references_manual.pdf
+
 
 
 
