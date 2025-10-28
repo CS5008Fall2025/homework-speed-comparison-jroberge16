@@ -256,7 +256,41 @@ For both these questions, are you are free to use what you did as the last secti
 
 1. Select one technical interview question (this module or previous) from the [technical interview list](https://github.com/CS5008-khoury/Resources/blob/main/TechInterviewQuestions.md) below and answer it in a few sentences. You can use any resource you like to answer the question.
 
+
+   Question: Explain why you would use a vector. Give common use cases.
+
+   In my opinion, I consider a vector the default choice for most of my data structure decisions. They are lightweight, easy to define, and work for a lot of use cases. Vectors work best when you need direct access to every element, you know roughly the total number of elements, and you have enough memory to set aside for a contiguous block of memory. I would generally stay away from vectors if you need to insert in the middle of the array or add to the beginning of the array since this can be $O(n)$. Some common use cases for arrays include iterating over a small list and searching for elements in a sorted list that rarely changes.
+
+
+
+
+
 2. Select one coding question (this module or previous) from the [coding practice repository](https://github.com/CS5008-khoury/Resources/blob/main/LeetCodePractice.md) and include a c file with that code with your submission. Make sure to add comments on what you learned, and if you compared your solution with others. 
+
+Question:  Given the head of a linked list and an integer val, remove all the nodes of the linked list that has Node.val == val, and return the new head.
+
+
+```c
+struct ListNode* removeElements(struct ListNode* head, int val) {
+    // First, handle the case where the head itself should be removed
+    while (head && head->val == val) {
+        head = head->next;
+    }
+
+    struct ListNode* curr = head;
+
+    while (curr && curr->next) {
+        if (curr->next->val == val) {
+            curr->next = curr->next->next;
+        } else {
+            curr = curr->next;
+        }
+    }
+
+    return head;
+}
+```
+
 
 ## References
 
