@@ -31,8 +31,8 @@ For Sort, we are asking for the Big $O$ for taking the current data structure an
 Since the worst case can change considerably based on what sort you use for sorting (if any), list each algorithm below, and specify the algorithm used in your assumption.  For BST, write which  method of traversal you would use to sort it.  
 
 *	Vector: Using the merge sort algorithm, we can assume that we can write these values in $n\cdot\log(n) $
-*	Single Linked List: We can assume that we can write these values in $n\cdot\log(n) $ by using the merge sort algorithm. We can implement merge sort on a linked list directly, or we can convert a linked list to an array and back again in $O(n)$.
-*	Double Linked List: We can assume that we can write these values in $n\cdot\log(n) $ by using the merge sort algorithm. We can implement merge sort on a linked list directly, or we can convert a linked list to an array and back again in $O(n)$.
+*	Single Linked List: We can assume that we can write these values in $n\cdot\log(n) $ by using the merge sort algorithm. We can implement merge sort on a linked list directly, or we can convert a linked list to an vector and back again in $O(n)$.
+*	Double Linked List: We can assume that we can write these values in $n\cdot\log(n) $ by using the merge sort algorithm. We can implement merge sort on a linked list directly, or we can convert a linked list to an vector and back again in $O(n)$.
 *	Sorted Vector - already sorted
 *	Sorted Single Linked List - already sorted: $O(n)$ since we are writing to a file
 *	Sorted Double Linked List - already sorted: $O(n)$ since we are writing to a file
@@ -56,7 +56,7 @@ For the Operations `Add/Insert`, `Search/Find`, and `Remove`, we have different 
       7 --> 6
    ```
 2. Vector:
-In the `our add back` operation for the vector data structure, we have an amortized runtime of $O(1)$ vs a worst-case of $O(n)$. This worst-case happens when we go over our vector’s capacity. Our vector is a fixed size, and when we reach that fixed size, we make a new array that is generally double the capacity. With this new array, we then copy the existing values from the old array into the new array. In this scenario, our worst case is $O(n)$, but generally adding to the back is $O(1)$.
+In the `our add back` operation for the vector data structure, we have an amortized runtime of $O(1)$ vs a worst-case of $O(n)$. This worst-case happens when we go over our vector’s capacity. Our vector is a fixed size, and when we reach that fixed size, we make a new vector that is generally double the capacity. With this new vector, we then copy the existing values from the old vector into the new vector. In this scenario, our worst case is $O(n)$, but generally adding to the back is $O(1)$.
 
 
 
@@ -259,7 +259,7 @@ For both these questions, are you are free to use what you did as the last secti
 
    Question: Explain why you would use a vector. Give common use cases.
 
-   In my opinion, I consider a vector the default choice for most of my data structure decisions. They are lightweight, easy to define, and work for a lot of use cases. Vectors work best when you need direct access to every element, you know roughly the total number of elements, and you have enough memory to set aside for a contiguous block of memory. I would generally stay away from vectors if you need to insert in the middle of the array or add to the beginning of the array since this can be $O(n)$. Some common use cases for arrays include iterating over a small list and searching for elements in a sorted list that rarely changes.
+   In my opinion, I consider a vector the default choice for most of my data structure decisions. They are lightweight, easy to define, and work for a lot of use cases. Vectors work best when you need direct access to every element, you know roughly the total number of elements, and you have enough memory to set aside for a contiguous block of memory. I would generally stay away from vectors if you need to insert in the middle of the vector or add to the beginning of the vector since this can be $O(n)$. Some common use cases for vectors include iterating over a small list and searching for elements in a sorted list that rarely changes.
 
 
 
