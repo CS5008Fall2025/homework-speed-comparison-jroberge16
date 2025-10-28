@@ -238,13 +238,13 @@ https://www.geeksforgeeks.org/dsa/introduction-to-avl-tree/
 
 Fill out the table below. This is a common technical interview topic!
 
-| Structure          | Good to use when                                                                 | Bad to use when                                                                  |
-| ------------------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| Vector             |                                                                                  |                                                                                  |
-| Linked List        | Good for stacks with frequent front only access                                  |                                                                                  |
-| Sorted Vector      | When values coming in are already mostly sorted and we need quick search access. | When space is limited and the dataset is extremely large causing memory to swap. |
-| Sorted Linked List |                                                                                  |                                                                                  |
-| BST                |                                                                                  | data is presorted                                                                |
+| Structure | Good to use when | Bad to Use When |
+|-----------|------------------|-----------------|
+| Vector | You need direct access to every element, removing from the back (amortized $O(1)$), ques, you known the approximate number of elements and can set aside that space | Not sure the max number of elements; adding/removing from the front or middle; ques; |
+| Linked List | Good for stacks with frequent front only access, you are unsure of the number of elements or can not set aside the contiguous block, | Random access, |
+| Sorted Vector | When values coming in are already mostly sorted and we need quick search access. | When space is limited and the dataset is extremely large causing memory to swap; frequently inserting elements, |
+| Sorted Linked List | moderate number of insertions; you need to maintain order but unsure of the size or can not set aside a contiguous block; | Searching |
+| BST | You need to make frequent searches; you'll be adding element frequently | Data is presorted, space is limited |
 
 ## Conclusion
 
@@ -272,6 +272,7 @@ Add your references here. A good reference includes an inline citation, such as 
 
 [ACM Reference Format]: https://www.acm.org/publications/authors/reference-formatting
 [IEEE]: https://www.ieee.org/content/dam/ieee-org/ieee/web/org/conferences/style_references_manual.pdf
+
 
 
 
