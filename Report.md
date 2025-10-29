@@ -38,7 +38,7 @@ Since the worst case can change considerably based on what sort you use for sort
 *	Sorted Double Linked List - already sorted: $O(n)$ since we are writing to a file
 *	Binary Search Tree: We can assume in order traversal. BST trees are already in order, so the cost here is writing to a file, which would be $O(n)$.
 
-source:https://www.youtube.com/watch?v=8ocB7a_c-Cc
+[4]
 
 
 ### Worst Case vs. Average Case
@@ -104,23 +104,23 @@ Create *at least three* graphics that each visually explain an aspect of your da
 
 For this analysis, we will analyze visuals one and two together, since they show similar information. Each graph in the visual above represents an operation performed during our analysis. Each line within the graph represents a particular data structure. For the purposes of this analysis, we will analyze one graph at a time.
 
-* `Add`: This shows that the BST was our most performant data structure. Our sorted vector and linked list behaved similarly and had similar runtimes.
+   * `Add`: This shows that the BST was our most performant data structure. Our sorted vector and linked list behaved similarly and had similar runtimes.
 
-* `Search`: The sorted vector was our most performant data structure, but BST was a very close second. BST amortized search runtime is $O(\log n)$ while a sorted vector’s worst-case runtime using binary search is $O(\log n)$. We are surprised that the overhead between the data structures didn’t cause a more substantial difference in runtimes, and that BST’s worst case of $O(n)$ didn’t appear more often.
+   * `Search`: The sorted vector was our most performant data structure, but BST was a very close second. BST amortized search runtime is $O(\log n)$ while a sorted vector’s worst-case runtime using binary search is $O(\log n)$. We are surprised that the overhead between the data structures didn’t cause a more substantial difference in runtimes, and that BST’s worst case of $O(n)$ didn’t appear more often.
 
-* `Save`: These runtimes were all roughly equivalent. Writing to a file should be $O(n)$ for all data structures.
+   * `Save`: These runtimes were all roughly equivalent. Writing to a file should be $O(n)$ for all data structures.
 
-* `Remove`: BST was the fastest at removing an element. I was surprised at how slow a sorted linked list was at removing an element.
+   * `Remove`: BST was the fastest at removing an element. I was surprised at how slow a sorted linked list was at removing an element.
 
-* `Add Front`: As expected, adding to the front of a vector is much slower when compared to a linked list. For a vector, this runtime should be $O(n)$, and for a linked list, we expect $O(1)$.
+   * `Add Front`: As expected, adding to the front of a vector is much slower when compared to a linked list. For a vector, this runtime should be $O(n)$, and for a linked list, we expect $O(1)$.
 
-* `Add Back`: Both runtimes were roughly equivalent with an $O(1)$ runtime. Surprisingly, our graph shows a linear runtime for both, but we believe this is merely overhead since the actual runtimes are very small.
+   * `Add Back`: Both runtimes were roughly equivalent with an $O(1)$ runtime. Surprisingly, our graph shows a linear runtime for both, but we believe this is merely overhead since the actual runtimes are very small.
 
-* `Remove Front`: As expected, the runtime for a vector was very slow when removing from the front. This aligns with our expectation since removing from the front of a vector is guaranteed to be $O(n)$ time complexity, but for a linked list, this would be $O(1)$.
+   * `Remove Front`: As expected, the runtime for a vector was very slow when removing from the front. This aligns with our expectation since removing from the front of a vector is guaranteed to be $O(n)$ time complexity, but for a linked list, this would be $O(1)$.
 
-* `Remove Back`: As expected, our linked list was much slower at removing from the back, which is an $O(n)$ operation.
+   * `Remove Back`: As expected, our linked list was much slower at removing from the back, which is an $O(n)$ operation.
 
-* `Get`: The linked list was the slowest at retrieving by index, which is an $O(n)$ operation. Our vector, as expected, showed constant runtime for retrieving by index.
+   * `Get`: The linked list was the slowest at retrieving by index, which is an $O(n)$ operation. Our vector, as expected, showed constant runtime for retrieving by index.
 
 
 #### Graphic 3:
@@ -179,32 +179,30 @@ For example:
 
 1. If you wrote your linked list as a single linked list, removing from the back was expensive. If you wrote it as a double linked list, removing from the back was cheap. Why do you think that is?
 
-With a doubly linked list we can traverse our dataset forward and backward, while a singly linked list we can traverse in the forward direction. Although we can access the last element of a singly linked list in $O(1)$ time, we cannot reassign the $(n-1)$ value as the last value without traversing the entire data structure. With a doubly linked list, removing the last element is trivial because we can go to the last element, then go to its previous node, assign it as the last value, and then remove the node. Given this information, removing the last node in a singly linked list has a time complexity of $O(n)$, while a doubly linked list’s time is $O(1)$.
+   With a doubly linked list we can traverse our dataset forward and backward, while a singly linked list we can traverse in the forward direction. Although we can access the last element of a singly linked list in $O(1)$ time, we cannot reassign the $(n-1)$ value as the last value without traversing the entire data structure. With a doubly linked list, removing the last element is trivial because we can go to the last element, then go to its previous node, assign it as the last value, and then remove the node. Given this information, removing the last node in a singly linked list has a time complexity of $O(n)$, while a doubly linked list’s time is $O(1)$.
 
 2. When running most functions, at least ~30% of the tests were worse case scenarios. Why do you think that is?
 
-Our sampling method for our datasets ensures that at least 30% of our searches and removals are based on a worst-case scenario. This is because 30% of our samples are not present in our samples, which means we have to search through every node before returning NULL.
+   Our sampling method for our datasets ensures that at least 30% of our searches and removals are based on a worst-case scenario. This is because 30% of our samples are not present in our samples, which means we have to search through every node before returning NULL.
 
 3. What was done in the code to encourage that?
 
-The function ` build_sample_indexes` suggests that 30% of our removals and searches are a worst-case scenario. In this function, the variable `SAMPLE_SPLIT` builds our experiment so that 70% of the samples will exist in the linked list while the 30% of the samples may or may not exist. Therefore, we are forced to traverse all nodes in order to determine that a value is not present in our linked list. 
+   The function ` build_sample_indexes` suggests that 30% of our removals and searches are a worst-case scenario. In this function, the variable `SAMPLE_SPLIT` builds our experiment so that 70% of the samples will exist in the linked list while the 30% of the samples may or may not exist. Therefore, we are forced to traverse all nodes in order to determine that a value is not present in our linked list. 
 
 4. How did this particularly influence the linked list searches?
-```mermaid
-flowchart LR
-    node_1["Head<br/>Node 1<br/>value: 1"] --> node_2["Node 2<br/>value: 2"]
-    node_2 --> node_3["Node 3<br/>value: 3"]
-    node_3 --> Null((Null))
-```
-The chart above shows us a basic singly linked list. Lets say we are trying to find the value $4$ in this linked list.To find the value $4$, we must traverse the entire data structure. This scenario is particularly bad for a linked list because other data structures can use sort order to alleviate this shortcoming. In a sorted vector, we can use binary search ($O(\log(n))$), and with a binary search tree, our amortized search is $O(\log(n))$. A linked list really does not have a mechanism to take advantage of ordering and therefore must check every node.
+   ```mermaid
+   flowchart LR
+      node_1["Head<br/>Node 1<br/>value: 1"] --> node_2["Node 2<br/>value: 2"]
+      node_2 --> node_3["Node 3<br/>value: 3"]
+      node_3 --> Null((Null))
+   ```
+   The chart above shows us a basic singly linked list. Lets say we are trying to find the value $4$ in this linked list.To find the value $4$, we must traverse the entire data structure. This scenario is particularly bad for a linked list because other data structures can use sort order to alleviate this shortcoming. In a sorted vector, we can use binary search ($O(\log(n))$), and with a binary search tree, our amortized search is $O(\log(n))$. A linked list really does not have a mechanism to take advantage of ordering and therefore must check every node.
 
 #### Test Bias
 
 1. The tests were inherently biased towards the BST to perform better due the setup of the experiment. Explain why this is the case.  (hint: think about the randomization of the data, and the worst case scenario for BST).
 
-In our experiment, we are taking random samples, and BST performs best with randomized data. When data is randomized, it is likely that we will end up building a relatively balanced tree. A tree is considered balanced when the height of the tree is no greater than $O(\log(n))$. When a binary tree has this property, it means that our add, delete, find, and remove operations will be $O(\log(n))$.
-
-https://www.geeksforgeeks.org/dsa/balanced-binary-tree/
+   In our experiment, we are taking random samples, and BST performs best with randomized data. When data is randomized, it is likely that we will end up building a relatively balanced tree. A tree is considered balanced when the height of the tree is no greater than $O(\log(n))$. When a binary tree has this property, it means that our add, delete, find, and remove operations will be $O(\log(n))$.[5]
 
 2. What would generate the worst case scenery for a BST?
 
@@ -229,10 +227,7 @@ An AVL tree is one of our self-balancing trees. AVL's are able to maintain its b
 * Right-Right (RR) Rotation
 * Left-Right (LR) Rotation
 * Right-Left (RL) Rotation
-
-https://www.geeksforgeeks.org/dsa/self-balancing-binary-search-trees/
-https://www.youtube.com/watch?v=zP2xbKerIds
-https://www.geeksforgeeks.org/dsa/introduction-to-avl-tree/
+[1, 2, 3]
 
 ## Scenario
 
@@ -244,7 +239,7 @@ Fill out the table below. This is a common technical interview topic!
 | Linked List | Good for stacks with frequent front only access, you are unsure of the number of elements or can not set aside the contiguous block, | Random access, |
 | Sorted Vector | When values coming in are already mostly sorted and we need quick search access. | When space is limited and the dataset is extremely large causing memory to swap; frequently inserting elements, |
 | Sorted Linked List | moderate number of insertions; you need to maintain order but unsure of the size or can not set aside a contiguous block; | Searching |
-| BST | You need to make frequent searches; you'll be adding element frequently | Data is presorted, space is limited |
+| BST | You need to make frequent searches and the tree is balanced; you'll be adding element frequently | Data is presorted, space is limited |
 
 ## Conclusion
 
@@ -257,58 +252,43 @@ For both these questions, are you are free to use what you did as the last secti
 1. Select one technical interview question (this module or previous) from the [technical interview list](https://github.com/CS5008-khoury/Resources/blob/main/TechInterviewQuestions.md) below and answer it in a few sentences. You can use any resource you like to answer the question.
 
 
-   Question: Explain why you would use a vector. Give common use cases.
+   __Question: Explain why you would use a vector. Give common use cases.__
 
    In my opinion, I consider a vector the default choice for most of my data structure decisions. They are lightweight, easy to define, and work for a lot of use cases. Vectors work best when you need direct access to every element, you know roughly the total number of elements, and you have enough memory to set aside for a contiguous block of memory. I would generally stay away from vectors if you need to insert in the middle of the vector or add to the beginning of the vector since this can be $O(n)$. Some common use cases for vectors include iterating over a small list and searching for elements in a sorted list that rarely changes.
 
 
-
-
-
 2. Select one coding question (this module or previous) from the [coding practice repository](https://github.com/CS5008-khoury/Resources/blob/main/LeetCodePractice.md) and include a c file with that code with your submission. Make sure to add comments on what you learned, and if you compared your solution with others. 
 
-Question:  Given the head of a linked list and an integer val, remove all the nodes of the linked list that has Node.val == val, and return the new head.
+   __Question:  Given the head of a linked list and an integer val, remove all the nodes of the linked list that has Node.val == val, and return the new head.__
 
+   ```c
+   struct ListNode* removeElements(struct ListNode* head, int val) {
+      // First, handle the case where the head itself should be removed
+      while (head && head->val == val) {
+         head = head->next;
+      }
 
-```c
-struct ListNode* removeElements(struct ListNode* head, int val) {
-    // First, handle the case where the head itself should be removed
-    while (head && head->val == val) {
-        head = head->next;
-    }
+      struct ListNode* curr = head;
 
-    struct ListNode* curr = head;
+      while (curr && curr->next) {
+         if (curr->next->val == val) {
+               curr->next = curr->next->next;
+         } else {
+               curr = curr->next;
+         }
+      }
 
-    while (curr && curr->next) {
-        if (curr->next->val == val) {
-            curr->next = curr->next->next;
-        } else {
-            curr = curr->next;
-        }
-    }
-
-    return head;
-}
-```
+      return head;
+   }
+   ```
 
 
 ## References
-
-Add your references here. A good reference includes an inline citation, such as [1] , and then down in your references section, you include the full details of the reference. Computer Science research often uses [IEEE] or [ACM Reference format].
-
-[1] Reference info, date, etc.
-
-[^1^]: Implementing a BST with a self-balancing algorithm, such as AVL or Red-Black Trees is a great research paper topic!
-
-<!-- links moved to bottom for easier reading in plain text (btw, this a comment that doesn't show in the webpage generated-->
-
-[image markdown]: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#images
-
-[ACM Reference Format]: https://www.acm.org/publications/authors/reference-formatting
-[IEEE]: https://www.ieee.org/content/dam/ieee-org/ieee/web/org/conferences/style_references_manual.pdf
-
-
-
+[1] De Silva, M. (n.d.). AVL Trees Simply Explained. YouTube. https://www.youtube.com/watch?v=zP2xbKerIds 
+[2] geeksforgeeks. (2025a, July 11). Self-balancing binary search trees. GeeksforGeeks. https://www.geeksforgeeks.org/dsa/self-balancing-binary-search-trees/ 
+[3] GeeksforGeeks. (2025b, October 11). AVL Tree Data Structure. GeeksforGeeks. https://www.geeksforgeeks.org/dsa/introduction-to-avl-tree/ 
+[4] Take U forward. (n.d.). Sort a Linked List | Merge Sort and Brute Force. YouTube. https://www.youtube.com/watch?v=8ocB7a_c-Cc 
+[5] GeeksforGeeks. (2025b, July 23). Balanced binary tree. https://www.geeksforgeeks.org/dsa/balanced-binary-tree/ 
 
 
 
